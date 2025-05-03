@@ -201,7 +201,7 @@ def run(
             self.scheduler, num_inference_steps, device, timesteps, sigmas
         )
     else:
-        sigmas = torch.tensor(sigmas).to('cuda')
+        sigmas = torch.tensor(sigmas).to(device)
         timesteps = (sigmas[:-1] * 1000).to(int)
         num_inference_steps = len(timesteps)
         self.scheduler.sigmas = sigmas
